@@ -1,0 +1,36 @@
+{
+  "name": "chat-component",
+  "version": "0.0.1",
+  "description": "A minimal OpenAI chat web component to hook as a client to any backend implementation",
+  "main": "./dist/chat-component.umd.cjs",
+  "module": "./dist/chat-component.js",
+  "exports": {
+    ".": {
+      "import": "./dist/chat-component.js",
+      "require": "./dist/chat-component.udm.cjs"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf dist *.tgz",
+    "start": "vite --port 8000 --host 0.0.0.0",
+    "build": "vite build",
+    "watch": "vite build --watch --minify false",
+    "preview": "vite preview",
+    "prepare": "npm run build -s"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dompurify": "^3.0.6",
+    "lit": "^2.8.0",
+    "marked": "^9.1.5"
+  },
+  "devDependencies": {
+    "@types/dom-speech-recognition": "^0.0.4",
+    "@types/dompurify": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.5"
+  }
+}

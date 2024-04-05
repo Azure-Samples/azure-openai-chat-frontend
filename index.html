@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Azure OpenAI JavaScript Chat Sample" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <title>OpenAI Chat App JavaScript</title>
+  </head>
+  <body>
+    <main class="chat__main">
+      <h1>Welcome to this Azure OpenAI JavaScript Chat Sample</h1>
+      <!-- When using this sample chat app as part of an existing app, you only need the section below. 
+        However, you will need to replace the data-attribute values hardcoded in the chat-component tag with your own data-binded values.
+      -->
+      <section class="chat__container">
+        <chat-component
+            title="Ask anything or try an example"
+            data-input-position="sticky"
+            data-interaction-model="chat"
+            data-api-url="http://localhost:3000"
+            data-use-stream="true"
+            data-approach="rrr"
+            data-overrides="{&quot;retrieval_mode&quot;:&quot;hybrid&quot;,&quot;top&quot;:3,&quot;semantic_ranker&quot;:true,&quot;semantic_captions&quot;:false,&quot;exclude_category&quot;:&quot;&quot;,&quot;prompt_template&quot;:&quot;&quot;,&quot;prompt_template_prefix&quot;:&quot;&quot;,&quot;prompt_template_suffix&quot;:&quot;&quot;,&quot;suggest_followup_questions&quot;:true}"
+            data-custom-styles="{&quot;AccentHigh&quot;:&quot;#692b61&quot;,&quot;AccentLight&quot;:&quot;#f6d5f2&quot;,&quot;AccentDark&quot;:&quot;#5e3c7d&quot;,&quot;TextColor&quot;:&quot;#123f58&quot;,&quot;BackgroundColor&quot;:&quot;#e3e3e3&quot;,&quot;ForegroundColor&quot;:&quot;#4e5288&quot;,&quot;FormBackgroundColor&quot;:&quot;#f5f5f5&quot;,&quot;BorderRadius&quot;:&quot;10px&quot;,&quot;BorderWidth&quot;:&quot;3px&quot;,&quot;FontBaseSize&quot;:&quot;14px&quot;}"
+            data-custom-branding="true"
+            data-theme="light"
+          ></chat-component>
+      </section>
+    </main>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+      html,
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+      }
+      chat-component {
+        display: block;
+        width: 100%;
+      }
+      .chat__main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 10px 20px;
+        padding: 10px 20px;
+      }
+      .chat__container {
+        width: 100%;
+      }
+      @media screen and (min-width: 768px) {
+        .chat__main {
+          width: 80%;
+          padding: 50px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
+</html>
