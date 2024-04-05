@@ -1,57 +1,72 @@
-# Project Name
+## Azure OpenAI Chat Frontend 
 
-(short, 1-3 sentenced, description of the project)
+This folder contains a Lit implementation, consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
 
-## Features
+It is a classic chat UI that can be used to send messages to the API and receive responses.
 
-This project framework provides the following features:
+## Technical stack
 
-* Feature 1
-* Feature 2
-* ...
+The following technologies are part of the frontend application:
 
-## Getting Started
+- [Lit](https://lit.dev) and LitElement
+- [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
+- [Vite](https://vitejs.dev/guide/) and [Rollup](https://rollupjs.org/introduction/) for local development, bundling and serving
+- [TypeScript](https://www.typescriptlang.org/)
+- [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) for code linting and formatting
 
-### Prerequisites
+## Configuration
 
-(ideally very short, if any)
+The frontend application is configured using a global configuration file. You can enable or disable the default prompts, and configure the default prompt texts, the API endpoint and other settings.
 
-- OS
-- Library version
-- ...
+All texts and labels are configurable to match your use case. To customize the texts, please edit the [global config](./src/config/globalConfig.js) file.
 
-### Installation
+## Running the application
 
-(ideally very short)
+To run the application locally, you must install [Node.js LTS](https://nodejs.org) and make sure you can run `npm` commands from your terminal.
 
-- npm install [package name]
-- mvn install
-- ...
+Then you can proceed by following these steps:
 
-### Quickstart
-(Add steps to get up and running quickly)
+- To install all npm dependencies, please run `npm install`. This is a npm workspace, so all dependencies will be installed in the root folder.
+- To start the local development server, open a new terminal and run `npm run start`. This will start the local development server on port 8000.
+- To build the application, open a new terminal and run `npm run build`. This will generate a production build in the `dist` folder.
 
-1. git clone [repository clone url]
-2. cd [repository name]
-3. ...
+> [IMPORTANT]
+> For the application to be functional, you will need to connect it to a locally running or remotely [deployed backend service](#deploying-the-app-to-azure-static-web-apps), and make sure that the data attribute `data-api-url` is pointing to the correct endpoint. 
 
+## Connecting to a deployed backend
 
-## Demo
+The Search API service implements the [HTTP protocol for AI chat apps](https://github.com/Azure-Samples/ai-chat-app-protocol). It can be used with any backend service that implements the same protocol, like the [Node.js backend client in this repo](https://github.com/Azure-Samples/azure-search-openai-javascript) or the [Python backend client in this repository](https://github.com/Azure-Samples/azure-search-openai-demo).
 
-A demo app is included to show how to use the project.
+To connect to a backend, follow these steps:
 
-To run the demo, follow these steps:
+1. Deploy the backend services as explained in their respective repository readme files.
+2. Deploy the frontend application to Azure as [explained here](#deploying-the-app-to-azure-static-web-apps) or start it locally.
+3. Get the frontend URL:
 
-(Add steps to start up the demo)
+- If you want to use the deployed web app, run `azd env get-values | grep FRONTEND_URI` to get the URL.
+- If you want to use the local web app, use `http://localhost:8000`.
+- If you want to use the Codespaces local web app, use `https://<your_codespace_base_url>-8000.app.github.dev`.
 
-1.
-2.
-3.
+3. Open the backend repository your want to use, for example: https://github.com/Azure-Samples/azure-search-openai-javascript
+4. Set the frontend URL as an allowed origin with `azd env set ALLOWED_ORIGIN <your_frontend_url>`.
+5. Follow the [steps to deploy the Python backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
+6. Once the backend service is fully deployed, get the backend URL with `azd env get-values | grep BACKEND_URI`.
+7. Set the backend URL in this repo, running `azd env set BACKEND_URI <your_backend_url>`.
+8. Depending on whether you want to use the deployed frontend app or the local frontend app:
 
-## Resources
+- If you want to use the deployed frontend app, run `azd up` to redeploy.
+- If you want to use the local frontend app on your machine or in Codespaces, run:
 
-(Any additional resources or related projects)
+  ```sh
+  # Export the environment variable.
+  # The syntax may be different depending on your shell or if you're using Windows.
+  export BACKEND_URI=<your_backend_url>
 
-- Link to supporting information
-- Link to similar sample
-- ...
+  # Start the app
+  npm start
+  ```
+
+## Deploying the app to Azure Static Web Apps
+
+You can deploy to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) by using the [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy) or the whole infrastructure with [Bicep](https://bicep.dev/) using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview).
+
