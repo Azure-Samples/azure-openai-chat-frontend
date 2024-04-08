@@ -221,7 +221,7 @@ test.describe('errors', () => {
     await expect(page.locator('.chat__txt.error')).toBeVisible();
 
     // make sure it's the generic message
-    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems.');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
   });
 
   test('stream: on bad request', async ({ page }) => {
@@ -245,7 +245,7 @@ test.describe('errors', () => {
     await page.getByTestId('submit-question-button').click();
     await expect(page.locator('.chat__txt.error')).toBeVisible();
     // make sure it's the user error message
-    await expect(page.locator('.chat__txt.error')).toContainText('Please modify your question and try again');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
   });
 
   test('stream: content filter during stream', async ({ page }) => {
@@ -260,7 +260,7 @@ test.describe('errors', () => {
 
     await page.getByTestId('submit-question-button').click();
     await expect(page.locator('.chat__txt.error')).toBeVisible({ timeout: 30_000 });
-    await expect(page.locator('.chat__txt.error')).toContainText('Please modify your question and try again');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
 
     // make sure the content is there for all text entries including some of the streamed content
     const chatContent = page.locator('.chat__txt--entry');
@@ -284,19 +284,13 @@ test.describe('errors', () => {
     await page.route('/chat', (route) => route.fulfill(internalServerError));
     await page.route('**/chat', (route) => route.fulfill(internalServerError));
 
-    await page.getByTestId('button__developer-settings').click();
-    const streamSetting = page.locator('label').filter({ hasText: 'Stream chat' }).locator('i');
-
-    await streamSetting.click();
-    await expect(streamSetting).not.toBeChecked();
-
     await page.locator('button').filter({ hasText: 'Close' }).click();
 
     await page.getByTestId('submit-question-button').click();
     await expect(page.locator('.chat__txt.error')).toBeVisible();
 
     // make sure it's the generic message
-    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems.');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
   });
 
   test('no stream: on bad request', async ({ page }) => {
@@ -316,18 +310,10 @@ test.describe('errors', () => {
     await page.route('/chat', (route) => route.fulfill(badRequest));
     await page.route('**/chat', (route) => route.fulfill(badRequest));
 
-    await page.getByTestId('button__developer-settings').click();
-    const streamSetting = page.locator('label').filter({ hasText: 'Stream chat' }).locator('i');
-
-    await streamSetting.click();
-    await expect(streamSetting).not.toBeChecked();
-
-    await page.locator('button').filter({ hasText: 'Close' }).click();
-
     await page.getByTestId('submit-question-button').click();
     await expect(page.locator('.chat__txt.error')).toBeVisible();
     // make sure it's the user error message
-    await expect(page.locator('.chat__txt.error')).toContainText('Please modify your question and try again');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
   });
 
   test('ask: on server failure', async ({ page }) => {
@@ -350,7 +336,7 @@ test.describe('errors', () => {
     await expect(page.locator('.chat__txt.error')).toBeVisible();
 
     // make sure it's the generic message
-    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems.');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
   });
 
   test('ask: on bad request', async ({ page }) => {
@@ -375,7 +361,7 @@ test.describe('errors', () => {
     await page.getByTestId('submit-question-button').click();
     await expect(page.locator('.chat__txt.error')).toBeVisible();
     // make sure it's the user error message
-    await expect(page.locator('.chat__txt.error')).toContainText('Please modify your question and try again');
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
   });
 });
 
