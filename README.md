@@ -39,22 +39,11 @@ The Search API service implements the [HTTP protocol for AI chat apps](https://g
 
 To connect to a backend, follow these steps:
 
-1. Deploy the backend services as explained in their respective repository readme files.
-2. Deploy the frontend application to Azure as [explained here](#deploying-the-app-to-azure-static-web-apps) or start it locally.
-3. Get the frontend URL:
-
-| Environment | URL                                                     |
-| ----------- | ------------------------------------------------------- |
-| Local       | http://localhost:8000                                   |
-| Production  | `azd env get-values \| grep FRONTEND_URI`               |
-| Codespace   | `https://<your_codespace_base_url>-8000.app.github.dev` |
-
-3. Open the backend repository your want to use, for example: https://github.com/Azure-Samples/azure-search-openai-javascript
-4. Set the frontend URL as an allowed origin with `azd env set ALLOWED_ORIGIN <your_frontend_url>`.
-5. Follow the [steps to deploy the backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
-6. Once the backend service is fully deployed, get the backend URL with `azd env get-values | grep BACKEND_URI`.
-7. Set the backend URL in this repo, running `azd env set BACKEND_URI <your_backend_url>`.
-8. Depending on whether you want to use the deployed frontend app or the local frontend app:
+1. Deploy the backend services as explained in their respective repository readme files, for example following these [steps to deploy the backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
+2. Once the backend service is fully deployed, get the backend URL with `azd env get-values | grep BACKEND_URI`.
+3. Deploy the frontend application to Azure as [explained here](#deploying-the-app-to-azure-static-web-apps) or start it locally or in codespaces.
+4. Set the backend URL in this repo, running `azd env set BACKEND_URI <your_backend_url>` that you got in step 2.
+5. Depending on whether you want to use the deployed frontend app or the local frontend app:
 
 - If you want to use the deployed frontend app, run `azd up` to redeploy.
 - If you want to use the local frontend app on your machine or in Codespaces, run:
@@ -68,10 +57,22 @@ To connect to a backend, follow these steps:
   npm start
   ```
 
+> [NOTE]
+> You may need to enable CORS in your backend service, by running `azd env set ALLOWED_ORIGIN <your_frontend_url>`. 
+
+Get the frontend URL, following this table:
+
+| Environment | URL                                                     |
+| ----------- | ------------------------------------------------------- |
+| Local       | http://localhost:8000                                   |
+| Production  | `azd env get-values \| grep FRONTEND_URI`               |
+| Codespace   | `https://<your_codespace_base_url>-8000.app.github.dev` |
+
 ## Using this module as a library
 
 If you want to use the module as a library as it is used in [the JavaScript sample](https://github.com/Azure-Samples/azure-search-openai-javascript), set the environment variable `IS_LIB` to true, running `azd env set IS_LIB true`.
 
 ## Deploying the app to Azure Static Web Apps
 
-You can deploy to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) by using the [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy) or the whole infrastructure with [Bicep](https://bicep.dev/) using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview).
+To deploy this application code to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) you can use [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy) or using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview), by running `azd up` and following the instruction in the terminal.
+
