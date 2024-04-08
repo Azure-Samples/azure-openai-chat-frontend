@@ -1,4 +1,4 @@
-## Azure OpenAI Chat Frontend 
+## Azure OpenAI Chat Frontend
 
 This folder contains a Lit implementation, consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
 
@@ -31,7 +31,7 @@ Then you can proceed by following these steps:
 - To build the application, open a new terminal and run `npm run build`. This will generate a production build in the `dist` folder.
 
 > [IMPORTANT]
-> For the application to be functional, you will need to connect it to a locally running or remotely [deployed backend service](#deploying-the-app-to-azure-static-web-apps), and make sure that the data attribute `data-api-url` is pointing to the correct endpoint. 
+> For the application to be functional, you will need to connect it to a locally running or remotely [deployed backend service](#deploying-the-app-to-azure-static-web-apps), and make sure that the data attribute `data-api-url` is pointing to the correct endpoint.
 
 ## Connecting to a deployed backend
 
@@ -43,9 +43,11 @@ To connect to a backend, follow these steps:
 2. Deploy the frontend application to Azure as [explained here](#deploying-the-app-to-azure-static-web-apps) or start it locally.
 3. Get the frontend URL:
 
-- If you want to use the deployed web app, run `azd env get-values | grep FRONTEND_URI` to get the URL.
-- If you want to use the local web app, use `http://localhost:8000`.
-- If you want to use the Codespaces local web app, use `https://<your_codespace_base_url>-8000.app.github.dev`.
+| Environment | URL                                                     |
+| ----------- | ------------------------------------------------------- |
+| Local       | http://localhost:8000                                   |
+| Production  | `azd env get-values \| grep FRONTEND_URI`               |
+| Codespace   | `https://<your_codespace_base_url>-8000.app.github.dev` |
 
 3. Open the backend repository your want to use, for example: https://github.com/Azure-Samples/azure-search-openai-javascript
 4. Set the frontend URL as an allowed origin with `azd env set ALLOWED_ORIGIN <your_frontend_url>`.
@@ -67,10 +69,9 @@ To connect to a backend, follow these steps:
   ```
 
 ## Using this module as a library
-If you want to use the module as a library as it is used in [the JavaScript sample](https://github.com/Azure-Samples/azure-search-openai-javascript), set the environment variable `IS_LIB` to true, running `azd env set IS_LIB true`.
 
+If you want to use the module as a library as it is used in [the JavaScript sample](https://github.com/Azure-Samples/azure-search-openai-javascript), set the environment variable `IS_LIB` to true, running `azd env set IS_LIB true`.
 
 ## Deploying the app to Azure Static Web Apps
 
 You can deploy to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) by using the [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy) or the whole infrastructure with [Bicep](https://bicep.dev/) using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview).
-
