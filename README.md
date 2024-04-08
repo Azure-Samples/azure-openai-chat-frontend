@@ -63,7 +63,7 @@ To connect to a backend, follow these steps:
   ```
 
 > [NOTE]
-> You may need to enable CORS in your backend service, by running `azd env set ALLOWED_ORIGIN <your_frontend_url>`. 
+> You may need to enable CORS in your backend service, by running `azd env set ALLOWED_ORIGIN <your_frontend_url>` then deploy again with `azd up`. 
 
 Get the frontend URL, following this table:
 
