@@ -57,6 +57,9 @@ To connect to a backend, follow these steps:
   npm start
   ```
 
+> [NOTE]
+> You may need to enable CORS in your backend service, by running `azd env set ALLOWED_ORIGIN <your_frontend_url>`. The frontend URL may be the url you open your deployed application at, or `localhost:8000`, or both.
+
 ## Using this module as a library
 If you want to use the module as a library as it is used in [the JavaScript sample](https://github.com/Azure-Samples/azure-search-openai-javascript), set the environment variable `IS_LIB` to true, running `azd env set IS_LIB true`.
 
