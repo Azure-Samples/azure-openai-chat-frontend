@@ -17,6 +17,9 @@
       "backendUri": {
         "value": "${BACKEND_URI}"
       },
+      "isLib": {
+        "value": "${IS_LIB=false}"
+      },
       "aliasTag": {
         "value": "${AZURE_ALIAS}"
       },

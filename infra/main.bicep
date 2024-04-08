@@ -28,9 +28,10 @@ param chatFrontendAppLocation string
 @description('Use Application Insights for monitoring and performance tracing')
 param useApplicationInsights bool = false
 
-
 // Allow to override the default backend
 param backendUri string = ''
+
+param isLib string = ''
 
 // Only needed for CD due to internal policies restrictions
 param aliasTag string = ''
@@ -75,4 +76,6 @@ output AZURE_RESOURCE_GROUP string = resourceGroup.name
 
 output FRONTEND_URI string = chatFrontendApp.outputs.uri
 
-output BACKEND_URI string = !empty(backendUri) ? backendUri : 'http://localhost:3000'
+output BACKEND_URI string = !empty(backendUri) ? backendUri : ''
+
+output IS_LIB string = isLib

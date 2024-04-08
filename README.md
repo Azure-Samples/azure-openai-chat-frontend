@@ -49,7 +49,7 @@ To connect to a backend, follow these steps:
 
 3. Open the backend repository your want to use, for example: https://github.com/Azure-Samples/azure-search-openai-javascript
 4. Set the frontend URL as an allowed origin with `azd env set ALLOWED_ORIGIN <your_frontend_url>`.
-5. Follow the [steps to deploy the Python backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
+5. Follow the [steps to deploy the backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
 6. Once the backend service is fully deployed, get the backend URL with `azd env get-values | grep BACKEND_URI`.
 7. Set the backend URL in this repo, running `azd env set BACKEND_URI <your_backend_url>`.
 8. Depending on whether you want to use the deployed frontend app or the local frontend app:
@@ -65,6 +65,10 @@ To connect to a backend, follow these steps:
   # Start the app
   npm start
   ```
+
+## Using this module as a library
+If you want to use the module as a library as it is used in [the JavaScript sample](https://github.com/Azure-Samples/azure-search-openai-javascript), set the environment variable `IS_LIB` to true, running `azd env set IS_LIB true`.
+
 
 ## Deploying the app to Azure Static Web Apps
 
