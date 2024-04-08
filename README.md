@@ -35,7 +35,12 @@ Then you can proceed by following these steps:
 
 ## Connecting to a deployed backend
 
-The Search API service implements the [HTTP protocol for AI chat apps](https://github.com/Azure-Samples/ai-chat-app-protocol). It can be used with any backend service that implements the same protocol, like the [Node.js backend client in this repo](https://github.com/Azure-Samples/azure-search-openai-javascript) or the [Python backend client in this repository](https://github.com/Azure-Samples/azure-search-openai-demo).
+The Search API service implements the [HTTP protocol for AI chat apps](https://github.com/Azure-Samples/ai-chat-app-protocol). It can be used with any backend service that implements the same protocol.
+
+| Recommended backend repos | Development environment | 
+| -- | -- | 
+|[Node.js](https://github.com/Azure-Samples/azure-search-openai-javascript)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-javascript)|
+|[Python](https://github.com/Azure-Samples/azure-search-openai-demo)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo)|
 
 To connect to a backend, follow these steps:
 
