@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "environmentName": {
+        "value": "${AZURE_ENV_NAME}"
+      },
+      "resourceGroupName": {
+        "value": "${AZURE_RESOURCE_GROUP}"
+      },
+      "location": {
+        "value": "${AZURE_LOCATION}"
+      },
+      "principalId": {
+        "value": "${AZURE_PRINCIPAL_ID}"
+      },
+      "backendUri": {
+        "value": "${BACKEND_URI}"
+      },
+      "aliasTag": {
+        "value": "${AZURE_ALIAS}"
+      },
+      "isContinuousDeployment": {
+        "value": "${CI=false}"
+      },
+      "chatFrontendAppLocation": {
+        "value": "${AZURE_FRONTEND_LOCATION=westeurope}"
+      }
+    }
+  }
