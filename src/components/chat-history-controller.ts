@@ -2,8 +2,8 @@ import { type ReactiveController, type ReactiveControllerHost } from 'lit';
 import { html } from 'lit';
 import { globalConfig, MAX_CHAT_HISTORY } from '../config/global-config.js';
 
-import iconHistory from '../../public/svg/history-icon.svg?raw';
-import iconHistoryDismiss from '../../public/svg/history-dismiss-icon.svg?raw';
+import iconHistory from '../svg/history-icon.svg?raw';
+import iconHistoryDismiss from '../svg/history-dismiss-icon.svg?raw';
 
 import './chat-action-button.js';
 

@@ -16,13 +16,13 @@ import { chatEntryToString, newListWithEntryAtIndex } from '../utils/index.js';
 
 // TODO: allow host applications to customize these icons
 
-import iconLightBulb from '../../public/svg/lightbulb-icon.svg?raw';
-import iconDelete from '../../public/svg/delete-icon.svg?raw';
-import iconCancel from '../../public/svg/cancel-icon.svg?raw';
-import iconSend from '../../public/svg/send-icon.svg?raw';
-import iconClose from '../../public/svg/close-icon.svg?raw';
-import iconLogo from '../../public/branding/brand-logo.svg?raw';
-import iconUp from '../../public/svg/chevron-up-icon.svg?raw';
+import iconLightBulb from '../svg/lightbulb-icon.svg?raw';
+import iconDelete from '../svg/delete-icon.svg?raw';
+import iconCancel from '../svg/cancel-icon.svg?raw';
+import iconSend from '../svg/send-icon.svg?raw';
+import iconClose from '../svg/close-icon.svg?raw';
+import iconLogo from '../svg/branding/brand-logo.svg?raw';
+import iconUp from '../svg/chevron-up-icon.svg?raw';
 
 // import only necessary components to reduce bundle size
 import './link-icon.js';

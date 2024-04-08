@@ -8,9 +8,9 @@ import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { chatEntryToString } from '../utils/index.js';
 
-import iconSuccess from '../../public/svg/success-icon.svg?raw';
-import iconCopyToClipboard from '../../public/svg/copy-icon.svg?raw';
-import iconQuestion from '../../public/svg/bubblequestion-icon.svg?raw';
+import iconSuccess from '../svg/success-icon.svg?raw';
+import iconCopyToClipboard from '../svg/copy-icon.svg?raw';
+import iconQuestion from '../svg/bubblequestion-icon.svg?raw';
 
 import './citation-list.js';
 import './chat-action-button.js';

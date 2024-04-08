@@ -4,8 +4,8 @@ import { styles } from '../styles/voice-input-button.js';
 import { globalConfig } from '../config/global-config.js';
 import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 
-import iconMicOff from '../../public/svg/mic-icon.svg?raw';
-import iconMicOn from '../../public/svg/mic-record-on-icon.svg?raw';
+import iconMicOff from '../svg/mic-icon.svg?raw';
+import iconMicOn from '../svg/mic-record-on-icon.svg?raw';
 
 @customElement('voice-input-button')
 export class VoiceInputButton extends LitElement {
