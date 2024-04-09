@@ -1,4 +1,4 @@
-# Contributing to [project-title]
+# Contributing to Azure OpenAI Chat Frontend
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -51,12 +51,12 @@ chances of your issue being dealt with quickly:
 * **Suggest a Fix** - if you can't fix the bug yourself, perhaps you can point to what might be
   causing the problem (line of code or commit)
 
-You can file new issues by providing the above information at the corresponding repository's issues link: https://github.com/[organization-name]/[repository-name]/issues/new].
+You can file new issues by providing the above information at the corresponding repository's issues link: https://github.com/AzureSample/azure-openai-chat-frontend/issues/new].
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-* Search the repository (https://github.com/[organization-name]/[repository-name]/pulls) for an open or closed PR
+* Search the repository (https://github.com/AzureSample/azure-openai-chat-frontend/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 
 * Make your changes in a new git fork:
@@ -73,4 +73,66 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push -f
     ```
 
-That's it! Thank you for your contribution!
+## Coding Rules
+
+To ensure consistency throughout the source code, keep these rules in mind as you are working:
+
+- All features or bug fixes **must be tested** by one or more specs (unit-tests).
+- All public API methods **must be documented**.
+
+## Commit Message Guidelines
+
+We have very precise rules over how our git commit messages can be formatted. This leads to **more
+readable messages** that are easy to follow when looking through the **project history**. But also,
+we use the git commit messages to **generate the Contoso Real Estate project change log**.
+
+### Commit Message Format
+
+We have very precise rules over how our Git commit messages must be formatted.
+This format leads to **easier to read commit history**.
+
+Each commit message consists of a **header**, a **body**, and a **footer**.
+
+```
+<header>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+The `header` is mandatory and must conform to the [Commit Message Header](#commit-message-header)
+
+The `body` is mandatory for all commits except for those of type "docs".
+When the body is present it must be at least 20 characters long and must conform to the [Commit Message Body](#commit-message-body) format.
+
+The `footer` is optional. The [Commit Message Footer](#commit-message-footer) format describes what the footer is used for and the structure it must have.
+
+#### Commit Message Header
+
+```
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+  │       │
+  │       └─⫸ Commit Scope: |portal|blog|api|testing|docs
+  │
+  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
+```
+
+The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
+
+##### Type
+
+Must be one of the following:
+
+- `build`
+- `ci`
+- `docs`
+- `feat`
+- `fix`
+- `perf`
+- `refactor`
+- `test`
+
+That's it! Thank you for your contribution! 🚀
