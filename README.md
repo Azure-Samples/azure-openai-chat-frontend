@@ -14,6 +14,15 @@ The following technologies are part of the frontend application:
 - [TypeScript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) for code linting and formatting
 
+## User interface demo
+
+The following video shows the user interface. Styles are fully configurable!
+
+
+https://github.com/Azure-Samples/azure-openai-chat-frontend/assets/4014025/a2933baa-bb8d-42b6-ad8e-a8cf052ddbd0
+
+
+
 ## Configuration
 
 The frontend application is configured using a global configuration file. You can enable or disable the default prompts, and configure the default prompt texts, the API endpoint and other settings.
