@@ -1,0 +1,313 @@
+import { test, expect } from '@playwright/test';
+
+test.describe('default', () => {
+  test('chat interation', async ({ page }) => {
+    await page.goto('/');
+
+    const defaultQuestions = page.getByTestId('default-question');
+
+    // expect there to be at least 3 default question buttons on page load
+    await test.step('Get default questions', async () => {
+      await expect(defaultQuestions).toHaveCount(3);
+    });
+
+    const chatInput = page.getByTestId('question-input');
+    const firstQuestionButton = defaultQuestions.nth(0);
+    const firstQuestionText = ((await firstQuestionButton.textContent()) ?? '').replace('Ask now', '').trim();
+
+    // should not have any text at the start
+    await test.step('Use default question', async () => {
+      await expect(chatInput).toHaveValue('');
+
+      await firstQuestionButton.click();
+      await expect(chatInput).toHaveValue(firstQuestionText);
+    });
+
+    const userMessage = page.locator('.chat__txt.user-message');
+
+    // Set to replay the response for a local route (will not be used for the official)
+    await page.routeFromHAR('./tests/e2e/hars/default-chat-response-stream.har', {
+      url: '/chat',
+      update: false,
+      updateContent: 'embed',
+    });
+
+    const showThoughtProcess = page.getByTestId('chat-show-thought-process');
+    await test.step('Get answer', async () => {
+      await expect(showThoughtProcess).not.toBeVisible();
+
+      await page.getByTestId('submit-question-button').click();
+
+      // wait for the thought process button to be enabled.
+      await expect(showThoughtProcess).toBeEnabled({ timeout: 30_000 });
+
+      await expect(userMessage).toHaveCount(1);
+      await expect(userMessage.nth(0)).toHaveText(firstQuestionText);
+
+      await expect(defaultQuestions).toHaveCount(0);
+
+      // make sure chat history is available for chat interaction mode
+      await expect(page.getByTestId('chat-history-button')).toBeVisible();
+    });
+
+    // make sure the response is formatted as list items
+    await test.step('response formatting', async () => {
+      await expect(page.locator('.items__listItem--step')).not.toHaveCount(0);
+    });
+
+    await test.step('Reset chat', async () => {
+      await page.getByTestId('chat-reset-button').click();
+      await expect(userMessage).toHaveCount(0);
+      await expect(defaultQuestions).toHaveCount(3);
+    });
+  });
+
+  test('waiting for response', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    await page.route('/chat', (route) =>
+      route.fulfill({
+        status: -1,
+      }),
+    );
+
+    await expect(page.getByTestId('loading-indicator')).not.toBeVisible();
+    await page.getByTestId('submit-question-button').click();
+    await expect(page.getByTestId('loading-indicator')).toBeVisible();
+    await expect(page.getByTestId('question-input')).not.toBeEnabled();
+  });
+
+  test('chat history', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    await page.routeFromHAR('./tests/e2e/hars/default-chat-response-stream.har', {
+      url: '/chat',
+      update: false,
+      updateContent: 'embed',
+    });
+
+    await page.getByTestId('submit-question-button').click();
+    // wait for the thought process button to be enabled.
+    await expect(page.getByTestId('chat-show-thought-process')).toBeEnabled({ timeout: 30_000 });
+
+    await test.step('new chat history', async () => {
+      await expect(page.locator('.chat-history__container')).not.toBeVisible();
+      await expect(page.getByTestId('chat-history-button')).toHaveText('Show Chat History');
+
+      await page.getByTestId('chat-history-button').click();
+
+      await expect(page.getByTestId('chat-history-button')).toHaveText('Hide Chat History');
+      await expect(page.locator('.chat-history__container')).toBeVisible();
+
+      // no history in the past yet
+      const chatHistory = page.locator('.chat-history__container .chat__listItem');
+      await expect(chatHistory).toHaveCount(0);
+    });
+
+    const currentChat = page.locator('.chat__txt--entry').nth(-1);
+    const lastChatText = await currentChat.textContent();
+
+    const currentUserMessage = page.locator('.chat__txt.user-message').nth(-1);
+    const lastChatUserMessageText = await currentUserMessage.textContent();
+
+    await test.step('chat history after chat', async () => {
+      // ask another question to get a new thread
+      await page.goto('/');
+      await page.getByTestId('question-input').fill(`testing chat history`);
+
+      await page.getByTestId('submit-question-button').click();
+      // wait for the thought process button to be enabled.
+      await expect(page.getByTestId('chat-show-thought-process')).toBeEnabled({ timeout: 30_000 });
+
+      await page.getByTestId('chat-history-button').click();
+
+      // should show the last two last conversation
+      const chatHistory = page.locator('.chat-history__container .chat__listItem');
+      await expect(chatHistory).toHaveCount(2);
+
+      // check that the last session's chat matches in the one in chat history
+      // which is different from current session's chat
+      const previousChatUserMessage = chatHistory.nth(0).locator('.chat__txt.user-message').nth(-1);
+      await expect(currentUserMessage).not.toHaveText(lastChatUserMessageText!);
+      await expect(previousChatUserMessage).toHaveText(lastChatUserMessageText!);
+
+      const previousChatLastItem = chatHistory.nth(-1).locator('.chat__txt--entry').nth(-1);
+      await expect(currentChat).not.toHaveText(lastChatText!);
+      await expect(previousChatLastItem).toHaveText(lastChatText!);
+    });
+  });
+});
+
+test.describe('errors', () => {
+  test('stream: on server failure', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    const internalServerError = {
+      status: 500,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        error: 'Internal Server error',
+      }),
+    };
+
+    await page.route('/chat', (route) => route.fulfill(internalServerError));
+    await page.route('**/chat', (route) => route.fulfill(internalServerError));
+
+    await page.getByTestId('submit-question-button').click();
+
+    // make sure it's the generic message
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
+  });
+
+  test('stream: on bad request', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    const badRequest = {
+      status: 400,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        statusCode: 400,
+        error: 'Bad request',
+        code: 'content_filter',
+        message: 'Content filtered',
+      }),
+    };
+
+    await page.route('/chat', (route) => route.fulfill(badRequest));
+    await page.route('**/chat', (route) => route.fulfill(badRequest));
+
+    await page.getByTestId('submit-question-button').click();
+    await expect(page.locator('.chat__txt.error')).toBeVisible();
+    // make sure it's the user error message
+    await expect(page.locator('.chat__txt.error')).toContainText('Unable to generate answer for this query. Please modify your question and try again.');
+  });
+
+  test('no stream: on server failure', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    const internalServerError = {
+      status: 500,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        error: 'Internal Server error',
+      }),
+    };
+
+    await page.route('/chat', (route) => route.fulfill(internalServerError));
+    await page.route('**/chat', (route) => route.fulfill(internalServerError));
+
+    // await page.locator('button').filter({ hasText: 'Close' }).click();
+
+    await page.getByTestId('submit-question-button').click();
+    await expect(page.locator('.chat__txt.error')).toBeVisible();
+
+    // make sure it's the generic message
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
+  });
+
+  test('no stream: on bad request', async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    const badRequest = {
+      status: 400,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        error: 'Internal Server error',
+        code: 'content_filter',
+        message: 'Content filtered',
+      }),
+    };
+
+    await page.route('/chat', (route) => route.fulfill(badRequest));
+    await page.route('**/chat', (route) => route.fulfill(badRequest));
+
+    await page.getByTestId('submit-question-button').click();
+    await expect(page.locator('.chat__txt.error')).toBeVisible();
+    // make sure it's the user error message
+    await expect(page.locator('.chat__txt.error')).toContainText('Sorry, we are having some problems. Please try again later.');
+  });
+});
+
+test.describe('generate answer', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await page.getByTestId('default-question').nth(0).click();
+
+    await page.routeFromHAR('./tests/e2e/hars/default-chat-response-stream.har', {
+      url: '/chat',
+      update: false,
+    });
+
+    await page.getByTestId('submit-question-button').click();
+    // wait for the thought process button to be enabled.
+    await expect(page.getByTestId('chat-show-thought-process')).toBeEnabled({ timeout: 30_000 });
+  });
+
+  test('show thought process', async ({ page }) => {
+    const showThoughtProcess = page.getByTestId('chat-show-thought-process');
+    const thoughtProcessAside = page.getByTestId('aside-thought-process');
+
+    await test.step('show/hide aside', async () => {
+      await expect(thoughtProcessAside).not.toBeVisible();
+      await showThoughtProcess.click();
+      await expect(thoughtProcessAside).toBeVisible();
+
+      await page.getByTestId('chat-hide-thought-process').click();
+      await expect(thoughtProcessAside).not.toBeVisible();
+    });
+
+    await test.step('Reset chat', async () => {
+      await showThoughtProcess.click();
+      await expect(thoughtProcessAside).toBeVisible();
+      await page.getByTestId('chat-reset-button').click();
+      await expect(thoughtProcessAside).not.toBeVisible();
+    });
+  });
+
+  test('citation', async ({ page }) => {
+    const citations = page.getByTestId('citation');
+    await expect(citations).toHaveCount(1);
+
+    await expect(citations.nth(0)).toBeEnabled();
+    // if this test fails, change the citation source format to whatever is available
+    await expect(citations.nth(0)).toContainText(/.*\.md$/);
+
+    await page.routeFromHAR('./tests/e2e/hars/citation-content.har', {
+      url: '/content/support.md',
+      update: false,
+      updateContent: 'embed',
+    });
+
+    await citations.nth(0).click();
+    // the thought process should be visible on the citation tab with citations visible
+    await expect(page.getByTestId('aside-thought-process').getByTestId('citation')).toBeVisible();
+
+  });
+
+  test('follow up questions', async ({ page }) => {
+    const followupQuestions = page.getByTestId('followUpQuestion');
+    await followupQuestions.waitFor();
+
+    await expect(followupQuestions).toHaveCount(3);
+
+    const chatInput = page.getByTestId('question-input');
+
+    for (let index = 0; index < 3; index++) {
+      const question = followupQuestions.nth(index);
+      await expect(question).toBeEnabled();
+      const questionText = await question.textContent();
+      expect(questionText).not.toBeNull();
+      expect(questionText).not.toBe('');
+      expect(questionText?.endsWith('?'), 'follow up question should end with ?').toBe(true);
+
+      await question.click();
+      await expect(chatInput).toHaveValue(questionText!);
+    }
+  });
+});
