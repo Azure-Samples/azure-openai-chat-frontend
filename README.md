@@ -46,7 +46,7 @@ To connect to a backend, follow these steps:
 
 1. Deploy the backend services as explained in their respective repository readme files, for example following these [steps to deploy the backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
 2. Once the backend service is fully deployed, get the backend URL with `azd env get-values | grep BACKEND_URI`.
-3. Deploy the frontend application to Azure as [explained here](#deploying-the-app-to-azure-static-web-apps) or start it locally or in codespaces.
+3. Deploy the frontend application to Azure as [explained here](#deploying-the-app-to-azure-static-web-apps) or start it locally or in Codespaces.
 4. Set the backend URL in this repo, running `azd env set BACKEND_URI <your_backend_url>` that you got in step 2.
 5. Depending on whether you want to use the deployed frontend app or the local frontend app:
 
