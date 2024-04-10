@@ -1,5 +1,5 @@
 {
-  "name": "chat-component",
+  "name": "azure-openai-chat-frontend",
   "version": "0.0.1",
   "description": "A minimal OpenAI chat web component to hook as a client to any backend implementation",
   "main": "./dist/chat-component.umd.cjs",
