@@ -27,7 +27,7 @@ https://github.com/Azure-Samples/azure-openai-chat-frontend/assets/4014025/a2933
 
 The frontend application is configured using a global configuration file. You can enable or disable the default prompts, and configure the default prompt texts, the API endpoint and other settings.
 
-All texts and labels are configurable to match your use case. To customize the texts, please edit the [global config](./src/config/globalConfig.js) file.
+All texts and labels are configurable to match your use case. To customize the texts, please edit the [global config](./src/config/global-config.js) file.
 
 ## Running the application
 
@@ -50,6 +50,7 @@ The Search API service implements the [HTTP protocol for AI chat apps](https://g
 | -- | -- | 
 |Property rental domain with [Node.js](https://github.com/Azure-Samples/azure-search-openai-javascript)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-javascript)<br>Example question: `What is the refund policy`|
 |Employee benefits with [Python](https://github.com/Azure-Samples/azure-search-openai-demo)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
+|Employee benefits with [.NET and C#](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo-csharp)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
 
 To connect to a backend, follow these steps:
 
