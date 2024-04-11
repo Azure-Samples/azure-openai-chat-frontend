@@ -90,3 +90,8 @@ If you want to use the module as a library as it is used in [the JavaScript samp
 
 To deploy this application code to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) you can use [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy) or using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview), by running `azd up` and following the instruction in the terminal.
 
+## Security considerations
+
+If you're deploying this sample to [Azure Static Web Apps](https://learn.microsoft.com/azure/static-web-apps/overview), using the [Azure Developer CLI template](./infra/), please consider enabling user authentication, following [this guide](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization). 
+
+Authenticating requests to the backend service, will need to be implemented in the backend service solution.
