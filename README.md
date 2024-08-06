@@ -2,9 +2,18 @@
 
 This folder contains a Lit implementation, consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
 
-It is a classic chat UI that can be used to send messages to the API and receive responses.
+It is a classic chat user interface that can be used to send messages to the API and receive responses.
 
-## Technical stack
+[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
+[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
+
+[Features](#features) • [Gettting Started](#getting-started) • [Guidance](#guidance) • [Resources](#resources) 
+
+## Features
+
+This repo features a classic Chat-GPT-like user interface, including additional capabilities to debug responses, restyle, revisit history and reset the chat.
+
+### Technical Stack
 
 The following technologies are part of the frontend application:
 
@@ -14,22 +23,28 @@ The following technologies are part of the frontend application:
 - [TypeScript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/) for code linting and formatting
 
-## User interface demo
+### Architecture Diagram
+
+The code in this repository represents the frontend application or colored area in the following diagram. It assumes a backend middleware and service deployments are in place. For a full reference, [visit this repo](https://github.com/Azure-Samples/azure-search-openai-javascript/tree/main)
+
+![frontend application chat UI](./docs/assets/architecture.png)
+
+## Demo Video
 
 The following video shows the user interface. Styles are fully configurable!
-
 
 https://github.com/Azure-Samples/azure-openai-chat-frontend/assets/4014025/a2933baa-bb8d-42b6-ad8e-a8cf052ddbd0
 
 
-
-## Configuration
+## Getting started
 
 The frontend application is configured using a global configuration file. You can enable or disable the default prompts, and configure the default prompt texts, the API endpoint and other settings.
 
 All texts and labels are configurable to match your use case. To customize the texts, please edit the [global config](./src/config/global-config.js) file.
 
 ## Running the application
+
+### Local installation
 
 To run the application locally, you must install [Node.js LTS](https://nodejs.org) and make sure you can run `npm` commands from your terminal.
 
@@ -87,12 +102,23 @@ Get the frontend URL, following this table:
 
 If you want to use the module as a library as it is used in [the JavaScript sample](https://github.com/Azure-Samples/azure-search-openai-javascript), set the environment variable `IS_LIB` to true, running `azd env set IS_LIB true`.
 
-## Deploying the app to Azure Static Web Apps
+## Guidance
 
-To deploy this application code to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) you can use [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy) or using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview), by running `azd up` and following the instruction in the terminal.
+### Deploying the app to Azure Static Web Apps
 
-## Security considerations
+Deploy this application code to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview)
+
+- using the [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy), by running `swa init && swa deploy`
+
+- using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview)
+by running `azd up` and following the instruction in the terminal.
+
+### Security considerations
 
 If you're deploying this sample to [Azure Static Web Apps](https://learn.microsoft.com/azure/static-web-apps/overview), using the [Azure Developer CLI template](./infra/), please consider enabling user authentication, following [this guide](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization). 
 
 Authenticating requests to the backend service, will need to be implemented in the backend service solution.
+
+## Resources
+
+- [AI Chat Protocol](https://github.com/microsoft/ai-chat-protocol)
