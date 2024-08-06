@@ -2,7 +2,11 @@
 
 This folder contains a Lit implementation, consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
 
-It is a classic chat UI that can be used to send messages to the API and receive responses.
+It is a classic chat user interface that can be used to send messages to the API and receive responses.
+
+
+[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
+[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
 
 ## Technical stack
 
