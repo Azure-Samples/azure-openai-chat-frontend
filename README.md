@@ -10,7 +10,7 @@ It is a classic chat user interface that can be used to send messages to the API
 When opening in Codespaces or Remote Containers, you will have all the dependencies preinstalled. Once the container is ready, run
 
 ```sh
-npm install && npm start
+npm start
 ```
 
 The frontend will be running in forwarded port 8000. 
