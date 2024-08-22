@@ -7,6 +7,17 @@ It is a classic chat user interface that can be used to send messages to the API
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
 [![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
 
+When opening in Codespaces or Remote Containers, you will have all the dependencies preinstalled. Once the container is ready, run
+
+```sh
+npm install && npm start
+```
+
+The frontend will be running in forwarded port 8000. 
+
+> [!IMPORTANT]
+> You will need to follow instructions in [Getting Started](#getting-started), to deploy a backend and connect it to the frontend app.
+
 [Features](#features) • [Gettting Started](#getting-started) • [Guidance](#guidance) • [Resources](#resources) 
 
 ## Features
@@ -43,6 +54,9 @@ The frontend application is configured using a global configuration file. You ca
 All texts and labels are configurable to match your use case. To customize the texts, please edit the [global config](./src/config/global-config.js) file.
 
 ## Running the application
+
+
+This application is optimized to be opened in a container. Yo
 
 ### Local installation
 
