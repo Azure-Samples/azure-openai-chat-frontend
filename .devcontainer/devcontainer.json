@@ -42,7 +42,7 @@
   "forwardPorts": [8000],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
 
   // Set minimal host requirements for the container.
   "hostRequirements": {
