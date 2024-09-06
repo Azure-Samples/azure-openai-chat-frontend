@@ -1,11 +1,14 @@
-## Azure OpenAI Chat Frontend
+# Azure OpenAI Chat Frontend
 
-This folder contains a Lit implementation, consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
+A classic chat user interface that can be used to send messages to an OpenAI API and receive responses. 
 
-It is a classic chat user interface that can be used to send messages to the API and receive responses.
+This application is frontend application implemented with [Lit](https://lit.dev/), consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
+
 
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
 [![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
+
+## Features
 
 When opening in Codespaces or Remote Containers, you will have all the dependencies preinstalled. Once the container is ready, run
 
@@ -49,20 +52,24 @@ https://github.com/Azure-Samples/azure-openai-chat-frontend/assets/4014025/a2933
 
 ## Getting started
 
-The frontend application is configured using a global configuration file. You can enable or disable the default prompts, and configure the default prompt texts, the API endpoint and other settings.
+
+### Running the application
+
+This application is optimized to be opened in a container. The frontend application is configured using a global configuration file. You can enable or disable the default prompts, and configure the default prompt texts, the API endpoint and other settings.
 
 All texts and labels are configurable to match your use case. To customize the texts, please edit the [global config](./src/config/global-config.js) file.
-
-## Running the application
-
-
-This application is optimized to be opened in a container. Yo
 
 ### Local installation
 
 To run the application locally, you must install [Node.js LTS](https://nodejs.org) and make sure you can run `npm` commands from your terminal.
 
 Then you can proceed by following these steps:
+
+Initialize as an [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview), running
+
+```bash
+azd init -t azure-openai-chat-frontend
+```
 
 - To install all npm dependencies, please run `npm install`. This is a npm workspace, so all dependencies will be installed in the root folder.
 - To start the local development server, open a new terminal and run `npm run start`. This will start the local development server on port 8000.
@@ -118,14 +125,13 @@ If you want to use the module as a library as it is used in [the JavaScript samp
 
 ## Guidance
 
-### Deploying the app to Azure Static Web Apps
+### Deploying 
 
-Deploy this application code to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview)
+- if you initialized as an [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview) template as explained above, you can run:
 
-- using the [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy), by running `swa init && swa deploy`
+`azd up` and follow the instructions in the terminal.
 
-- using the [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview)
-by running `azd up` and following the instruction in the terminal.
+- if you cloned or forked, you can also use the [Azure Static Web Apps CLI](https://learn.microsoft.com/azure/static-web-apps/static-web-apps-cli-deploy), by running `swa init && swa deploy`
 
 ### Security considerations
 
