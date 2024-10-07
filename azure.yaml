@@ -10,6 +10,17 @@ services:
     language: ts
     host: staticwebapp
     hooks:
+      prebuild: 
+        windows:
+          shell: pwsh
+          run: npm install
+          interactive: false
+          continueOnError: false
+        posix:
+          shell: sh
+          run: npm install
+          interactive: false
+          continueOnError: false
       predeploy:
         windows:
           shell: pwsh
