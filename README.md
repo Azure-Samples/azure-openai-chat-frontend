@@ -5,8 +5,7 @@ A classic chat user interface that can be used to send messages to an OpenAI API
 This application is frontend application implemented with [Lit](https://lit.dev/), consisting of multiple LitElements that can be used to interact with the Azure OpenAI API.
 
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
-[![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
+[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2) [![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=flat-square&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend/blob/ea72f003b0e420577cdcd7c860b2cd0202b2038f/README.md) [![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
 
 ## Features
 
@@ -70,7 +69,6 @@ Initialize as an [Azure Developer CLI](https://learn.microsoft.com/azure/develop
 ```bash
 azd init -t azure-openai-chat-frontend
 ```
-
 - To install all npm dependencies, please run `npm install`. This is a npm workspace, so all dependencies will be installed in the root folder.
 - To start the local development server, open a new terminal and run `npm run start`. This will start the local development server on port 8000.
 - To build the application, open a new terminal and run `npm run build`. This will generate a production build in the `dist` folder.
@@ -84,9 +82,9 @@ The Search API service implements the [HTTP protocol for AI chat apps](https://g
 
 | Recommended backend repos | Development environment | 
 | -- | -- | 
-|Property rental domain with [Node.js](https://github.com/Azure-Samples/azure-search-openai-javascript)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-javascript)<br>Example question: `What is the refund policy`|
-|Employee benefits with [Python](https://github.com/Azure-Samples/azure-search-openai-demo)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
-|Employee benefits with [.NET and C#](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo-csharp)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
+|Property rental domain with [Node.js](https://github.com/Azure-Samples/azure-search-openai-javascript)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-javascript)<br>[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend/blob/ea72f003b0e420577cdcd7c860b2cd0202b2038f/README.md)<br>Example question: `What is the refund policy`|
+|Employee benefits with [Python](https://github.com/Azure-Samples/azure-search-openai-demo)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo)<br>[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend/blob/ea72f003b0e420577cdcd7c860b2cd0202b2038f/README.md)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
+|Employee benefits with [.NET and C#](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo-csharp)<br>[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend/blob/ea72f003b0e420577cdcd7c860b2cd0202b2038f/README.md)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
 
 To connect to a backend, follow these steps:
 
