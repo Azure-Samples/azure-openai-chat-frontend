@@ -7,6 +7,7 @@ This application is frontend application implemented with [Lit](https://lit.dev/
 
 [![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=782482632&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=WestUs2)
 [![Open in Remote - Containers](https://img.shields.io/static/v1?style=for-the-badge&label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/azure-openai-chat-frontend)
+[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=for-the-badge&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend/blob/ea72f003b0e420577cdcd7c860b2cd0202b2038f/README.md)
 
 ## Features
 
@@ -84,10 +85,9 @@ The Search API service implements the [HTTP protocol for AI chat apps](https://g
 
 | Recommended backend repos | Development environment | 
 | -- | -- | 
-|Property rental domain with [Node.js](https://github.com/Azure-Samples/azure-search-openai-javascript)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-javascript)<br>Example question: `What is the refund policy`|
-|Employee benefits with [Python](https://github.com/Azure-Samples/azure-search-openai-demo)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
-|Employee benefits with [.NET and C#](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo-csharp)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
-
+|Property rental domain with [Node.js](https://github.com/Azure-Samples/azure-search-openai-javascript)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-javascript)[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=for-the-badge&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend)<br>Example question: `What is the refund policy`|
+|Employee benefits with [Python](https://github.com/Azure-Samples/azure-search-openai-demo)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo)[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=for-the-badge&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
+|Employee benefits with [.NET and C#](https://github.com/Azure-Samples/azure-search-openai-demo-csharp)|[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-search-openai-demo-csharp)[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-blue?style=for-the-badge&logo=codeanywhere)](https://app.codeanywhere.com/#https://github.com/Azure-Samples/azure-openai-chat-frontend)<br>Example question: `What is included in my Northwind Health Plus plan that is not in standard?`|
 To connect to a backend, follow these steps:
 
 1. Deploy the backend services as explained in their respective repository readme files, for example following these [steps to deploy the backend](https://github.com/Azure-Samples/azure-search-openai-javascript#deploying-from-scratch).
